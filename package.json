@@ -11,8 +11,9 @@
   "repository": "monterail/vuelidate",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "bundle:web": "rm -rf dist && webpack --config build/webpack.bundle.conf.js",
-    "bundle:lib": "rm -rf lib && babel src --out-dir lib",
+    "bundle:web": "rm -rf dist && BUILD=web webpack --config build/webpack.bundle.conf.js",
+    "bundle:lib": "rm -rf lib && BUILD=lib babel src --out-dir lib",
+    "plugins": ["transform-inline-environment-variables"],
     "build": "npm run bundle:lib && npm run bundle:web",
     "docs": "rm -rf gh-pages && mkdir gh-pages && node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --watch",
